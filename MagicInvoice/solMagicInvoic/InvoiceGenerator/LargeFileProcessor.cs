@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace InvoiceGenerator
+namespace OKQ8.InvoiceGenerator
 {
   
     public class LargeFileProcessor
     {
         string FILENAME;
-        const int megabyte = 7000000 * 10; // 400 lines at once to read
+        const int megabyte = 144 * 10; // 400 lines at once to read
 
         public void ProcessLargeTXT()
         {
 
         }
 
-        private void ReadAndProcessLargeFile(string theFilename, long whereToStartReading = 0)
+        public void ReadAndProcessLargeFile(string theFilename, long whereToStartReading = 0)
         {
             FileInfo info = new FileInfo(theFilename);
             long fileLength = info.Length;
@@ -48,7 +48,17 @@ namespace InvoiceGenerator
             // Do the processing here
             string utfString = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
             string[] lines = utfString.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
-            Console.WriteLine("Processed 100 lines...");
+            
+            //string[] lines = File.ReadAllLines(textFile, System.Text.Encoding.GetEncoding(1252)); //read swidish codes
+
+            Process(lines);
+
+            Console.WriteLine(utfString);
+        }
+
+        private void Process(string[] lines)
+        {
+            throw new NotImplementedException();
         }
     }
 }

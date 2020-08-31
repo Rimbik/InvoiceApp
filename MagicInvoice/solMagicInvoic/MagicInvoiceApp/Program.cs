@@ -12,10 +12,14 @@ namespace MagicInvoiceApp
 
         static void Main(string[] args)
         {
-            string fileWithFullPath = @"F:\MustDel\ReadLarge.txt";
+            string fileWithFullPath = @"F:\MustDel\MLANG.AUG2020_Test.txt";
 
-            var invoiceGenerator = new OKQ8.InvoiceGenerator.InvoiceGenerator(fileWithFullPath);
-            invoiceGenerator.Process();
+            //var invoiceGenerator = new OKQ8.InvoiceGenerator.InvoiceGenerator(fileWithFullPath);
+            //invoiceGenerator.Process();
+
+
+            var invGenerator = new OKQ8.InvoiceGenerator.LargeFileProcessor();
+            invGenerator.ReadAndProcessLargeFile(fileWithFullPath);
 
         }
 
