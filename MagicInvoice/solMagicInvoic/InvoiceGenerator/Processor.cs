@@ -11,6 +11,8 @@ namespace OKQ8.InvoiceGenerator
     public class Processor
     {
         static string INVOICE_NUMBER = "";
+        static string PREV_INVOICE_NUMBER = INVOICE_NUMBER;
+
         static string CARDNO = "";
         static bool ISCARDFOUND = false;
         static int INVOICE_CTR = 0;
@@ -18,16 +20,20 @@ namespace OKQ8.InvoiceGenerator
         static bool ISLINEITEM_STARTED = false;
         static bool ISLINEITEM_FINISHED = false;
 
-       // static InvoiceRow row = null;
+        static Invoices HEADER_INVOICE = new Invoices() {
+            Cards = new List<Card>()
+        };
+
+        // static InvoiceRow row = null;
         static Card CARD = new Card() { 
             Items = new LineItems() { 
                 InvoiceRows = new List<InvoiceRow>() 
             }
-        }; 
+        };
 
         public static void Process(string[] lines)
         {
-            
+
             bool InvoiceBlockBreakerFound = false;
 
             InVoiceCollection invColl = new InVoiceCollection();
@@ -35,7 +41,7 @@ namespace OKQ8.InvoiceGenerator
             var invoiceColl = new List<InvoiceRow>();
 
 
-          //  Console.WriteLine("Start Processing ....");
+            //  Console.WriteLine("Start Processing ....");
 
             int standardRowIDLength = "90194560014".Length;
 
@@ -53,7 +59,7 @@ namespace OKQ8.InvoiceGenerator
             //foreach (string line in lines)
             for (long lineNo = 0; lineNo < lines.Length; lineNo++)
             {
-                
+
                 var lineReading = lines[lineNo];
 
                 if (String.IsNullOrEmpty(lineReading))
@@ -81,26 +87,57 @@ namespace OKQ8.InvoiceGenerator
                 var cardNoRowIdentifierStr = Encoding.ASCII.GetString(rowBytes, 19, 4).Trim();
                 var isCardNo = cardNoRowIdentifierStr == "\u001f\u0001\a3" || GetField(lineReading, 30, 4) == "KORT";
 
-                if(isInvoiceLine)
+                if (isInvoiceLine || isDuplicateInvoiceLine)
                 {
                     INVOICE_NUMBER = Encoding.ASCII.GetString(rowBytes, 109, 12);  //109 - 109+11
                     ++INVOICE_CTR;
+
+                    if(INVOICE_NUMBER != PREV_INVOICE_NUMBER)
+                    {
+                        PREV_INVOICE_NUMBER = INVOICE_NUMBER;
+                        SetNewInvoiceArea();
+                    }
+                    else if(INVOICE_NUMBER == PREV_INVOICE_NUMBER)
+                    {
+                        //Invoice has Multiple Cards
+                       
+                       SaveFile();
+                        SetNewInvoiceArea();
+                    }
+
 
                     continue;
                 }
 
                 if(isCardNo)
                 {
-                    //CARD = new Card() { };
-                    CARD.CardNo = Encoding.ASCII.GetString(rowBytes, 34, 5).Trim();
+                    CARD = new Card()
+                    {
+                        Items = new LineItems()
+                        {
+                            InvoiceRows = new List<InvoiceRow>()
+                        }
+                    };
+
+                    CARD.CardNo = Encoding.ASCII.GetString(rowBytes, 34, 5).Trim() ?? "-";
+
                     CARD.CardText = "KORT " + Encoding.ASCII.GetString(rowBytes, 34, 5).Trim();
                     CARD.InvoiceNumber = INVOICE_NUMBER;
+                    
 
                     ISCARDFOUND = true;
                     CARDNO = CARD.CardNo;
 
                     ISCARDFOUND = true;
                     InvoiceBlockBreakerFound = false;
+
+                    if (CARD.CardNo == "0027")
+                    {
+                        var x1 = "111";
+                    }
+
+                    
+                    HEADER_INVOICE.Cards.Add(CARD);
 
                     continue; // Go to Next Line
                 }
@@ -142,8 +179,6 @@ namespace OKQ8.InvoiceGenerator
                     continue;
                 }
 
-               
-
                 if (ISLINEITEM_FINISHED)
                 {
                     rowBytes = Encoding.ASCII.GetBytes(lineReading);
@@ -160,6 +195,12 @@ namespace OKQ8.InvoiceGenerator
                         ResetCard();
                     }
                 }
+
+                //if(!ISLINEITEM_FINISHED && isDuplicateInvoiceLine)
+                //{
+                //    //Save Prev File
+                //    SaveFile();
+                //}
 
                 //Id Card Found then Get All LineItems
 
@@ -426,13 +467,31 @@ namespace OKQ8.InvoiceGenerator
             //  System.IO.File.WriteAllText(@"D:\temp\ROM\InvoiceCollectionLarge.json", jsonStr);
         }
 
+        private static void SetNewInvoiceArea()
+        {
+            HEADER_INVOICE = new Invoices()
+            {
+                Cards = new List<Card>()
+            };
+            
+            CARD = new Card()
+            {
+                Items = new LineItems()
+                {
+                    InvoiceRows = new List<InvoiceRow>()
+                }
+            };
+        }
+
         private static void SaveFile()
         {
-            Invoices headerInv = new Invoices();
-            headerInv.Cards = new List<Card>();
-            headerInv.Cards.Add(CARD);
+            //HEADER_INVOICE.Cards = new List<Card>();
+            //HEADER_INVOICE.Cards.Add(CARD);
+            
+            var jsonContent = JsonConvert.SerializeObject(HEADER_INVOICE, Formatting.Indented);
 
-            var jsonContent = JsonConvert.SerializeObject(headerInv, Formatting.Indented);
+            if (CARD.CardNo == null)
+                CARD.CardNo = "-";
 
             string fileName = INVOICE_CTR + "_" + CARD.CardNo.Trim() + "_" + CARD.InvoiceNumber + "_Invoice.json";
             System.IO.File.WriteAllText(@"D:\temp\ROM\MultiJson\" + fileName.Trim(), jsonContent);
