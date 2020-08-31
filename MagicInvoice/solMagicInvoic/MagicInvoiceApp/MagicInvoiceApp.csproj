@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.1" />
     <PackageReference Include="UblSharp" Version="1.1.1" />
     <PackageReference Include="UblSharp.Validation" Version="1.1.0" />
   </ItemGroup>

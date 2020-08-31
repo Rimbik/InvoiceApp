@@ -10,9 +10,24 @@ namespace OKQ8.InvoiceGenerator
 {
     public class Processor
     {
-        public void Process(string[] lines)
+        static string INVOICE_NUMBER = "";
+        static string CARDNO = "";
+        static bool ISCARDFOUND = false;
+        static int INVOICE_CTR = 0;
+        static bool ISLINEITEM_HEADER_READ = false;
+        static bool ISLINEITEM_STARTED = false;
+        static bool ISLINEITEM_FINISHED = false;
+
+       // static InvoiceRow row = null;
+        static Card CARD = new Card() { 
+            Items = new LineItems() { 
+                InvoiceRows = new List<InvoiceRow>() 
+            }
+        }; 
+
+        public static void Process(string[] lines)
         {
-            bool CardFound = false;
+            
             bool InvoiceBlockBreakerFound = false;
 
             InVoiceCollection invColl = new InVoiceCollection();
@@ -20,7 +35,7 @@ namespace OKQ8.InvoiceGenerator
             var invoiceColl = new List<InvoiceRow>();
 
 
-            Console.WriteLine("Start Processing ....");
+          //  Console.WriteLine("Start Processing ....");
 
             int standardRowIDLength = "90194560014".Length;
 
@@ -38,8 +53,11 @@ namespace OKQ8.InvoiceGenerator
             //foreach (string line in lines)
             for (long lineNo = 0; lineNo < lines.Length; lineNo++)
             {
-
+                
                 var lineReading = lines[lineNo];
+
+                if (String.IsNullOrEmpty(lineReading))
+                    continue;
 
                 byte[] rowBytes = Encoding.ASCII.GetBytes(lineReading);
 
@@ -63,15 +81,94 @@ namespace OKQ8.InvoiceGenerator
                 var cardNoRowIdentifierStr = Encoding.ASCII.GetString(rowBytes, 19, 4).Trim();
                 var isCardNo = cardNoRowIdentifierStr == "\u001f\u0001\a3" || GetField(lineReading, 30, 4) == "KORT";
 
-                if (lineNo == 316)
+                if(isInvoiceLine)
                 {
-                    var SSSS = "AAA";
+                    INVOICE_NUMBER = Encoding.ASCII.GetString(rowBytes, 109, 12);  //109 - 109+11
+                    ++INVOICE_CTR;
+
+                    continue;
                 }
 
+                if(isCardNo)
+                {
+                    //CARD = new Card() { };
+                    CARD.CardNo = Encoding.ASCII.GetString(rowBytes, 34, 5).Trim();
+                    CARD.CardText = "KORT " + Encoding.ASCII.GetString(rowBytes, 34, 5).Trim();
+                    CARD.InvoiceNumber = INVOICE_NUMBER;
+
+                    ISCARDFOUND = true;
+                    CARDNO = CARD.CardNo;
+
+                    ISCARDFOUND = true;
+                    InvoiceBlockBreakerFound = false;
+
+                    continue; // Go to Next Line
+                }
+
+                if(ISCARDFOUND && ISLINEITEM_HEADER_READ == false)
+                {
+                    bool isLineItemHeader = GetField(lineReading, 33, 7) == "Köpnota";
+                    if(isLineItemHeader)
+                    {
+                        //Get Ready to read LineItems
+                        ISLINEITEM_HEADER_READ = true;
+                    }
+
+                    continue;
+                }
+
+                if (ISLINEITEM_STARTED)
+                {
+                    var _row = ReadLineItemRow(lineReading);
+                    if(!String.IsNullOrEmpty(_row.Kopnota))
+                    if (_row.Kopnota == "-------" && _row.Dag == "----")
+                    {
+                        // LineItems Finished
+                        ISLINEITEM_FINISHED = true;
+                        ISLINEITEM_STARTED = false;
+                        ISCARDFOUND = false;
+
+                        //TIME TO CREATE INVOICE FILE (AS CARD and Its LineItems are created)
+                    }
+                }
+
+                if (ISCARDFOUND && ISLINEITEM_HEADER_READ)
+                {
+                    //Read LineItems
+                    ISLINEITEM_STARTED = true;
+                    var _row = ReadLineItemRow(lineReading);
+                    CARD.Items.InvoiceRows.Add(_row);
+                    
+                    continue;
+                }
+
+               
+
+                if (ISLINEITEM_FINISHED)
+                {
+                    rowBytes = Encoding.ASCII.GetBytes(lineReading);
+                    var invoiceTotalAmountRowIdentifier = Encoding.ASCII.GetString(rowBytes, 32, 17).Trim();
+                    var isInvoiceAmountStr = invoiceTotalAmountRowIdentifier == "Totalt alla kort";
+
+                    if (isInvoiceAmountStr)
+                    {
+                        GetInvoiceAmount(lineReading);
+
+                        ISLINEITEM_FINISHED = false;
+                        //Create File in HDD
+                        SaveFile();
+                        ResetCard();
+                    }
+                }
+
+                //Id Card Found then Get All LineItems
+
+                /* SUSPENDED FOR NEW LOOP
                 if (isCardNo)
                 {
-
+                    //CARD Found
                     //
+
                     if (CardFound && InvoiceBlockBreakerFound)
                     {
                         //InvoiceType_1
@@ -281,7 +378,7 @@ namespace OKQ8.InvoiceGenerator
 
                     Console.WriteLine("Invoice Created and Saved :" + fileName);
                 }
-
+                */
 
                 //"3"
                 //if (lineReading.Contains("KORT"))
@@ -327,6 +424,74 @@ namespace OKQ8.InvoiceGenerator
 
             //  var jsonStr =  JsonConvert.SerializeObject(invColl, Formatting.Indented);
             //  System.IO.File.WriteAllText(@"D:\temp\ROM\InvoiceCollectionLarge.json", jsonStr);
+        }
+
+        private static void SaveFile()
+        {
+            Invoices headerInv = new Invoices();
+            headerInv.Cards = new List<Card>();
+            headerInv.Cards.Add(CARD);
+
+            var jsonContent = JsonConvert.SerializeObject(headerInv, Formatting.Indented);
+
+            string fileName = INVOICE_CTR + "_" + CARD.CardNo.Trim() + "_" + CARD.InvoiceNumber + "_Invoice.json";
+            System.IO.File.WriteAllText(@"D:\temp\ROM\MultiJson\" + fileName.Trim(), jsonContent);
+        }
+
+        private static void ResetCard()
+        {
+            CARD = new Card()
+            {
+                Items = new LineItems()
+                {
+                    InvoiceRows = new List<InvoiceRow>()
+                }
+            };
+        }
+
+        private static void GetInvoiceAmount(string lineReading)
+        {
+            string invoiceAmount = "0";
+            
+            var rowBytes = Encoding.ASCII.GetBytes(lineReading);
+            invoiceAmount = Encoding.ASCII.GetString(rowBytes, 132, 10).Trim();
+            var _invoiceAmount = decimal.Parse(invoiceAmount.Replace(",", ".").Replace(" ", ""));
+            var _invoiceAmountRounded = Math.Ceiling(_invoiceAmount);
+
+            CARD.Items.InvoiceAmount = _invoiceAmount;
+            CARD.Items.InvoiceAmountRounded = _invoiceAmountRounded;
+           // card.Items.RowIdentifier = _invoiceHeader.RowIdentifier;
+            CARD.Items.InvoiceNumber = INVOICE_NUMBER;
+            CARD.InvoiceNumber = INVOICE_NUMBER;
+
+         //   InvoiceBlockBreakerFound = true;
+        }
+
+        private static InvoiceRow ReadLineItemRow(string lineReading)
+        {
+            //row create
+            var row = new InvoiceRow();
+
+           // row.RowId = ++rowIndex;
+
+            //row.Kopnota = Encoding.ASCII.GetString(rowBytes, 32, 8).Trim(); ; //32,8
+            row.Kopnota = GetField(lineReading, 32, 8).Trim();
+            row.Dag = GetField(lineReading, 41, 4).Trim();
+            row.Tid = GetField(lineReading, 46, 5).Trim();  //46,5
+            row.ForsStalle = GetField(lineReading, 52, 17).Trim();
+            row.Kundref = GetField(lineReading, 69, 9).Trim(); //69,9
+            row.Artikel = GetField(lineReading, 80, 10).Trim(); //80,10
+            row.Kvant = GetField(lineReading, 93, 5).Trim(); //93,5
+            row.Apris = GetField(lineReading, 101, 6).Trim(); //101,6
+            row.Brutto = GetField(lineReading, 109, 7).Trim(); //109,7
+            row.Rabatt = GetField(lineReading, 117, 7).Trim(); //117,7
+            row.Moms = GetField(lineReading, 127, 6).Trim(); //127,6
+            row.Netto = GetField(lineReading, 133, 9).Trim(); //135,9
+
+
+            //end-row Create
+
+            return row;
         }
 
         private static string GetField(string lineReading, int startIndex, int endIndex)

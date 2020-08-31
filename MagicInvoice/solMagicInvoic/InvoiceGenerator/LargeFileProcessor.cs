@@ -11,8 +11,9 @@ namespace OKQ8.InvoiceGenerator
         string FILENAME;
         const int megabyte = 144 * 10; // 400 lines at once to read
 
-        public void ProcessLargeTXT()
+        public LargeFileProcessor()
         {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
         }
 
@@ -24,7 +25,10 @@ namespace OKQ8.InvoiceGenerator
             long ctr = 0;
             long timesRead = 0;
 
-            FileStream fileStram = new FileStream(theFilename, FileMode.Open, FileAccess.Read);
+
+            var fileStram = new FileStream(theFilename, FileMode.Open, FileAccess.Read);
+            
+
             using (fileStram)
             {
                 byte[] buffer = new byte[megabyte];
@@ -32,8 +36,7 @@ namespace OKQ8.InvoiceGenerator
                 fileStram.Seek(whereToStartReading, SeekOrigin.Begin);
 
                 int bytesRead = 0;
-
-
+                
                 while ((bytesRead = fileStram.Read(buffer, 0, megabyte)) > 0)
                 {
                     ProcessChunk(buffer, bytesRead);
@@ -45,20 +48,31 @@ namespace OKQ8.InvoiceGenerator
 
         private void ProcessChunk(byte[] buffer, int bytesRead)
         {
-            // Do the processing here
-            string utfString = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
-            string[] lines = utfString.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
-            
-            //string[] lines = File.ReadAllLines(textFile, System.Text.Encoding.GetEncoding(1252)); //read swidish codes
+            // Do the processing here with Swidish Lines
+            string uniCodeString = Encoding.GetEncoding(1252).GetString(buffer, 0, buffer.Length);
 
+            string[] lines = uniCodeString.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            
             Process(lines);
 
-            Console.WriteLine(utfString);
+            Console.WriteLine(uniCodeString);
         }
 
         private void Process(string[] lines)
         {
-            throw new NotImplementedException();
+            OKQ8.InvoiceGenerator.Processor.Process(lines);
+        }
+
+        public void ReadWithStream(string theFilename)
+        {
+            var buffer = new char[megabyte];
+
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            StreamReader reader = new StreamReader(theFilename, System.Text.Encoding.GetEncoding(1252), true);
+            reader.Read(buffer, 0, buffer.Length);
+
+            var data = new string(buffer);
         }
     }
 }

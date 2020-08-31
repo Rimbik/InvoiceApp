@@ -8,7 +8,7 @@ namespace MagicInvoiceApp
     class Program
     {
         //const int megabyte = 144*1; // 400 lines at once to read
-        const int megabyte = 7000000 * 10; // 400 lines at once to read
+        const int megabyte = 144 * 10; // 400 lines at once to read
 
         static void Main(string[] args)
         {
@@ -19,7 +19,8 @@ namespace MagicInvoiceApp
 
 
             var invGenerator = new OKQ8.InvoiceGenerator.LargeFileProcessor();
-            invGenerator.ReadAndProcessLargeFile(fileWithFullPath);
+              invGenerator.ReadAndProcessLargeFile(fileWithFullPath);
+             //  invGenerator.ReadWithStream(fileWithFullPath);
 
         }
 

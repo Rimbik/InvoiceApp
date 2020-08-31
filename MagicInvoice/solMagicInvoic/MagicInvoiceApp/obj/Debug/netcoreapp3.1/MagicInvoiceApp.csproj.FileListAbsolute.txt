@@ -16,3 +16,5 @@ D:\ROMProject\MagicInvoice\solMagicInvoic\MagicInvoiceApp\obj\Debug\netcoreapp3.
 D:\ROMProject\MagicInvoice\solMagicInvoic\MagicInvoiceApp\bin\Debug\netcoreapp3.1\InvoiceGenerator.dll
 D:\ROMProject\MagicInvoice\solMagicInvoic\MagicInvoiceApp\bin\Debug\netcoreapp3.1\InvoiceGenerator.pdb
 D:\ROMProject\MagicInvoice\solMagicInvoic\MagicInvoiceApp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\ROMProject\MagicInvoice\solMagicInvoic\MagicInvoiceApp\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+D:\ROMProject\MagicInvoice\solMagicInvoic\MagicInvoiceApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
