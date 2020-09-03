@@ -9,7 +9,8 @@ namespace OKQ8.InvoiceGenerator
     public class LargeFileProcessor
     {
         string FILENAME;
-        const int megabyte = 144 * 10; // 400 lines at once to read
+        const int megabyte = 144 * 40000; // 400 lines at once to read
+        //57,60,000‬
 
         public LargeFileProcessor()
         {
@@ -39,14 +40,14 @@ namespace OKQ8.InvoiceGenerator
                 
                 while ((bytesRead = fileStram.Read(buffer, 0, megabyte)) > 0)
                 {
-                    ProcessChunk(buffer, bytesRead);
+                    ProcessChunk(buffer, bytesRead, ++ctr);
                     buffer = new byte[megabyte];
                 }
 
             }
         }
 
-        private void ProcessChunk(byte[] buffer, int bytesRead)
+        private void ProcessChunk(byte[] buffer, int bytesRead, long ctr)
         {
             // Do the processing here with Swidish Lines
             string uniCodeString = Encoding.GetEncoding(1252).GetString(buffer, 0, buffer.Length);
@@ -55,7 +56,7 @@ namespace OKQ8.InvoiceGenerator
             
             Process(lines);
 
-            Console.WriteLine(uniCodeString);
+            Console.WriteLine("Processed MB : " + ctr * 5);
         }
 
         private void Process(string[] lines)

@@ -61,6 +61,8 @@ namespace OKQ8.InvoiceGenerator
             {
 
                 var lineReading = lines[lineNo];
+                if (lineReading.Length < 140)
+                    continue;
 
                 if (String.IsNullOrEmpty(lineReading))
                     continue;
