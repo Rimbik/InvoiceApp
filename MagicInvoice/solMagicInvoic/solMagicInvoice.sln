@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicInvoiceApp", "MagicInvoiceApp\MagicInvoiceApp.csproj", "{25C32ED2-F9DC-4869-84B0-EC1D805C8F24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IFCClient", "MagicInvoiceApp\IFCClient.csproj", "{25C32ED2-F9DC-4869-84B0-EC1D805C8F24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceGenerator", "InvoiceGenerator\InvoiceGenerator.csproj", "{91130EBB-8DBA-4C0D-A3E2-E26DE6AF2FD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvoiceGenerator", "InvoiceGenerator\InvoiceGenerator.csproj", "{91130EBB-8DBA-4C0D-A3E2-E26DE6AF2FD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

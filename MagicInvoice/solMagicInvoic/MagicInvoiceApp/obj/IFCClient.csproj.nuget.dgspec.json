@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\MagicInvoiceApp\\MagicInvoiceApp.csproj": {}
+    "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\MagicInvoiceApp\\IFCClient.csproj": {}
   },
   "projects": {
     "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\InvoiceGenerator\\InvoiceGenerator.csproj": {
@@ -66,12 +66,12 @@
         }
       }
     },
-    "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\MagicInvoiceApp\\MagicInvoiceApp.csproj": {
+    "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\MagicInvoiceApp\\IFCClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\MagicInvoiceApp\\MagicInvoiceApp.csproj",
+        "projectUniqueName": "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\MagicInvoiceApp\\IFCClient.csproj",
         "projectName": "IFCClient",
-        "projectPath": "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\MagicInvoiceApp\\MagicInvoiceApp.csproj",
+        "projectPath": "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\MagicInvoiceApp\\IFCClient.csproj",
         "packagesPath": "C:\\Users\\User.DESKTOP-MN2GKEE\\.nuget\\packages\\",
         "outputPath": "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\MagicInvoiceApp\\obj\\",
         "projectStyle": "PackageReference",

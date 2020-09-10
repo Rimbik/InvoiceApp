@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "MagicInvoiceApp/1.0.0": {
+      "IFCClient/1.0.0": {
         "dependencies": {
           "InvoiceGenerator": "1.0.0",
           "System.Text.Encoding.CodePages": "4.7.1",
@@ -14,7 +14,7 @@
           "UblSharp.Validation": "1.1.0"
         },
         "runtime": {
-          "MagicInvoiceApp.dll": {}
+          "IFCClient.dll": {}
         }
       },
       "Microsoft.NETCore.Platforms/3.1.1": {},
@@ -339,7 +339,7 @@
     }
   },
   "libraries": {
-    "MagicInvoiceApp/1.0.0": {
+    "IFCClient/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

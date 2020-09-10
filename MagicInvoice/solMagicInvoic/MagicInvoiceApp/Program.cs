@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace MagicInvoiceApp
+namespace OKQ8.IFCApp
 {
     class Program
     {
