@@ -5,3 +5,5 @@ D:\ROMProject\MagicInvoice\solMagicInvoic\InvoiceGenerator\obj\Debug\netcoreapp3
 D:\ROMProject\MagicInvoice\solMagicInvoic\InvoiceGenerator\obj\Debug\netcoreapp3.1\InvoiceGenerator.AssemblyInfo.cs
 D:\ROMProject\MagicInvoice\solMagicInvoic\InvoiceGenerator\obj\Debug\netcoreapp3.1\InvoiceGenerator.dll
 D:\ROMProject\MagicInvoice\solMagicInvoic\InvoiceGenerator\obj\Debug\netcoreapp3.1\InvoiceGenerator.pdb
+D:\ROMProject\MagicInvoice\solMagicInvoic\InvoiceGenerator\obj\Debug\netcoreapp3.1\InvoiceGenerator.csprojAssemblyReference.cache
+D:\ROMProject\MagicInvoice\solMagicInvoic\InvoiceGenerator\obj\Debug\netcoreapp3.1\InvoiceGenerator.csproj.CoreCompileInputs.cache

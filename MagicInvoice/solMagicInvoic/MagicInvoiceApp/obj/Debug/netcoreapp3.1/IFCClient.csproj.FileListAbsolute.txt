@@ -18,3 +18,5 @@ D:\ROMProject\MagicInvoice\solMagicInvoic\MagicInvoiceApp\obj\Debug\netcoreapp3.
 D:\ROMProject\MagicInvoice\solMagicInvoic\MagicInvoiceApp\obj\Debug\netcoreapp3.1\IFCClient.csproj.CopyComplete
 D:\ROMProject\MagicInvoice\solMagicInvoic\MagicInvoiceApp\obj\Debug\netcoreapp3.1\IFCClient.dll
 D:\ROMProject\MagicInvoice\solMagicInvoic\MagicInvoiceApp\obj\Debug\netcoreapp3.1\IFCClient.pdb
+D:\ROMProject\MagicInvoice\solMagicInvoic\MagicInvoiceApp\obj\Debug\netcoreapp3.1\IFCClient.csproj.CoreCompileInputs.cache
+D:\ROMProject\MagicInvoice\solMagicInvoic\MagicInvoiceApp\obj\Debug\netcoreapp3.1\IFCClient.genruntimeconfig.cache
