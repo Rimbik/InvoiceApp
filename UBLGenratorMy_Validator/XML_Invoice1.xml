@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+   <cbc:ID>123</cbc:ID>
+   <cbc:IssueDate>2011-09-22</cbc:IssueDate>
+   <cac:InvoicePeriod>
+      <cbc:StartDate>2011-08-01</cbc:StartDate>
+      <cbc:EndDate>2011-08-31</cbc:EndDate>
+   </cac:InvoicePeriod>
+   <cac:AccountingSupplierParty>
+      <cac:Party>
+         <cac:PartyName>
+            <cbc:Name>OKQ8</cbc:Name>
+         </cac:PartyName>
+	 <cac:PostalAddress>
+                <cbc:StreetName>[TODO]</cbc:StreetName>
+                <cbc:AdditionalStreetName>[TODO]</cbc:AdditionalStreetName>
+                <cbc:CityName>[TODO]</cbc:CityName>
+                <cbc:PostalZone>[TODO]</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode>[TODO]</cbc:IdentificationCode>
+                </cac:Country>
+         </cac:PostalAddress>
+      </cac:Party>
+   </cac:AccountingSupplierParty>
+   <cac:AccountingCustomerParty>
+      <cac:Party>
+         <cac:PartyName>
+            <cbc:Name>North American Veeblefetzer</cbc:Name>
+         </cac:PartyName>
+      </cac:Party>
+   </cac:AccountingCustomerParty>
+   <cac:Delivery>
+   </cac:Delivery>
+   <cac:LegalMonetaryTotal>
+      <cbc:PayableAmount currencyID="CAD">100.00</cbc:PayableAmount>
+   </cac:LegalMonetaryTotal>
+   <cac:InvoiceLine>
+      <cbc:ID>1</cbc:ID>
+      <cbc:InvoicedQuantity unitCode="C62">4.37</cbc:InvoicedQuantity>
+      <cbc:LineExtensionAmount currencyID="KR">14.13</cbc:LineExtensionAmount>
+      <cac:OrderLineReference>
+     	 <cbc:LineID>1</cbc:LineID>
+      </cac:OrderLineReference>
+      <cac:Item>
+	 <cbc:Description languageID="se-SE">95 GOEASY</cbc:Description>
+	 <cbc:Name>95 GOEASY</cbc:Name>
+         <cac:SellersItemIdentification>
+         	<cbc:ID>XXXXXXXX AUTOMAT</cbc:ID>
+         </cac:SellersItemIdentification>
+      </cac:Item>
+      <cac:Price>
+		<cbc:PriceAmount currencyID="KR">14.13</cbc:PriceAmount>
+		<cbc:BaseQuantity unitCode="C62">4.37</cbc:BaseQuantity>
+      </cac:Price>
+       
+   </cac:InvoiceLine>
+</Invoice>

@@ -61,13 +61,14 @@ namespace UBLGenratorMy
         }
 
         public static void Foo() {
-            var path = @"D:\temp\ROM\MultiJson\xml"; // new Uri(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase)).LocalPath;
+            //var path = @"D:\ROM\CLARIFICATIONS\Questionnaires\Mapping\CASE_1\TARGET_12007011905.xml"; // new Uri(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase)).LocalPath;
+            var path = @"D:\ROM\CLARIFICATIONS\Questionnaires\Mapping\CASE_1\Preparation_ph2\12007011905 PEPPOL BIS 3_0.xml"; // new Uri(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase)).LocalPath;
 
 
             //XmlSchemaSet schema = new XmlSchemaSet();
             //schema.Add("urn:oasis:names:specification:ubl:schema:xsd:Invoice-2", @"D:\ROMProject\MagicInvoice\solMagicInvoic\InvoiceGenerator\schema\UBL_Invoice_2_1.xsd");
 
-            XmlReader rd = XmlReader.Create(path + "\\UBL-Invoice-2.1-Example.xml");
+            XmlReader rd = XmlReader.Create(path);
             XDocument doc = XDocument.Load(rd);
 
             UblDocumentValidator val = new UblDocumentValidator();

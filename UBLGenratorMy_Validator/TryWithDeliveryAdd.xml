@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+   <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+   <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0</cbc:CustomizationID>
+   <!-- <cbc:Note languageID="se-SE">[TODO] Throwing Error</cbc:Note> -->
+   <!--  <cbc:DocumentCurrencyCode listAgencyID="6" listID="ISO 4217 Alpha">EUR</cbc:DocumentCurrencyCode> Throwing Error -->
+   <cbc:ID>12007011905</cbc:ID>
+   <cbc:IssueDate>2020-07-31</cbc:IssueDate>
+   <cac:InvoicePeriod>
+      <cbc:StartDate>2020-07-01</cbc:StartDate>
+      <cbc:EndDate>2020-07-31</cbc:EndDate>
+   </cac:InvoicePeriod>
+   <cac:AccountingSupplierParty>
+      <cac:Party>
+         <cac:PartyName>
+            <cbc:Name>OKQ8</cbc:Name>
+         </cac:PartyName>
+	 <cac:PostalAddress>
+                <cbc:StreetName>[TODO]</cbc:StreetName>
+                <cbc:AdditionalStreetName>[TODO]</cbc:AdditionalStreetName>
+                <cbc:CityName>[TODO]</cbc:CityName>
+                <cbc:PostalZone>[TODO]</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode>[TODO]</cbc:IdentificationCode>
+                </cac:Country>
+         </cac:PostalAddress>
+	 <cac:Contact>
+                <cbc:Name>[TODO] - Not Mandatory</cbc:Name>
+                <cbc:Telephone>[TODO] - Not Mandatory</cbc:Telephone>
+                <cbc:ElectronicMail>[TODO] - Not Mandatory</cbc:ElectronicMail>
+         </cac:Contact>
+	<cac:Person>
+		<cbc:FirstName>[TODO] - Not Mandatory</cbc:FirstName>
+		<cbc:FamilyName>[TODO] - Not Mandatory</cbc:FamilyName>
+		<cbc:MiddleName>[TODO] - Not Mandatory</cbc:MiddleName>
+		<cbc:JobTitle>[TODO] - Not Mandatory</cbc:JobTitle>
+	</cac:Person>
+      </cac:Party>
+   </cac:AccountingSupplierParty>
+   <cac:AccountingCustomerParty>
+      <cac:Party>
+         <cac:PartyName>
+            <cbc:Name>[TODO]</cbc:Name>
+         </cac:PartyName>
+	 <cac:PostalAddress>
+                <cbc:StreetName>XXXXXX123 JAN XXXX</cbc:StreetName>
+                <cbc:AdditionalStreetName>MÄSSVÄGEN 38</cbc:AdditionalStreetName>
+                <cbc:CityName>XXXXX456</cbc:CityName>
+                <cbc:PostalZone>796 30</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode>[TODO]</cbc:IdentificationCode>
+                </cac:Country>
+         </cac:PostalAddress>
+	 <cac:Contact>
+                <cbc:Name>[TODO] - Not Mandatory</cbc:Name>
+                <cbc:Telephone>[TODO] - Not Mandatory</cbc:Telephone>
+                <cbc:ElectronicMail>[TODO] - Not Mandatory</cbc:ElectronicMail>
+         </cac:Contact>
+	<cac:Person>
+		<cbc:FirstName>[TODO] - Not Mandatory</cbc:FirstName>
+		<cbc:FamilyName>[TODO] - Not Mandatory</cbc:FamilyName>
+		<cbc:MiddleName>[TODO] - Not Mandatory</cbc:MiddleName>
+		<cbc:JobTitle>[TODO] - Not Mandatory</cbc:JobTitle>
+	</cac:Person>
+      </cac:Party>
+   </cac:AccountingCustomerParty>
+<cac:Delivery>
+   <cac:DeliveryAddress>
+      <cbc:StreetName>Via Dell'Arcoveggio</cbc:StreetName>
+      <cbc:BuildingNumber>403</cbc:BuildingNumber>
+      <cbc:CityName>Bologna</cbc:CityName>
+      <cbc:PostalZone>40129</cbc:PostalZone>
+      <cac:Country>
+         <cbc:IdentificationCode>IT</cbc:IdentificationCode>
+         <cbc:Name>Italy</cbc:Name>
+      </cac:Country>
+   </cac:DeliveryAddress>
+   <cac:Despatch>
+
+	<cac:Contact>
+	   <cbc:Name>John Smith</cbc:Name>
+	   <cbc:ElectronicMail>jsmith@example.com</cbc:ElectronicMail>
+	</cac:Contact>
+   </cac:Despatch>
+</cac:Delivery>
+   <cac:LegalMonetaryTotal>
+      <cbc:PayableAmount currencyID="KR">61</cbc:PayableAmount>
+   </cac:LegalMonetaryTotal>
+   <cac:InvoiceLine>
+      <cbc:ID>1</cbc:ID>
+      <cbc:Note>KORT 0014</cbc:Note>
+      <cbc:InvoicedQuantity unitCode="C62">4.37</cbc:InvoicedQuantity>
+      <cbc:LineExtensionAmount currencyID="KR">14.13</cbc:LineExtensionAmount>
+      <cac:OrderLineReference>
+     	 <cbc:LineID>1</cbc:LineID>
+      </cac:OrderLineReference>
+      <cac:Item>
+	 <cbc:Description languageID="se-SE">95 GOEASY</cbc:Description>
+	 <cbc:Name>95 GOEASY</cbc:Name>
+         <cac:SellersItemIdentification>
+         	<cbc:ID>XXXXXXXX AUTOMAT</cbc:ID>
+         </cac:SellersItemIdentification>
+	 <cac:ClassifiedTaxCategory>
+            <cbc:ID  schemeID="UN/ECE 5305" schemeAgencyID="6">S</cbc:ID>
+            <cbc:Percent>25</cbc:Percent>
+            <cac:TaxScheme>
+              <cbc:ID schemeID="UN/ECE 5153" schemeAgencyID="6">VAT</cbc:ID>
+            </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+      <cac:AdditionalItemProperty>
+         <cbc:Name>KORT</cbc:Name>
+         <cbc:Value>0014</cbc:Value>
+      </cac:AdditionalItemProperty>
+      </cac:Item>
+      <cac:Price>
+		<cbc:PriceAmount currencyID="KR">60.62</cbc:PriceAmount>
+		<cbc:BaseQuantity unitCode="C62">4.37</cbc:BaseQuantity>
+		
+       </cac:Price>
+       <cac:ItemPriceExtension>
+   		<cbc:Amount currencyID="normalizedString">60.62</cbc:Amount>
+		<cac:TaxTotal>
+		      <cbc:TaxAmount currencyID="KR">12.12</cbc:TaxAmount>
+		      <cbc:RoundingAmount currencyID="KR">12.12</cbc:RoundingAmount>
+		      <cbc:TaxEvidenceIndicator>true</cbc:TaxEvidenceIndicator>
+		      <cbc:TaxIncludedIndicator>true</cbc:TaxIncludedIndicator>
+		      <cac:TaxSubtotal>
+			      <cbc:TaxableAmount currencyID="KR">61.75</cbc:TaxableAmount>
+			      <cbc:TaxAmount currencyID="KR">12.12</cbc:TaxAmount>
+			      <cbc:CalculationSequenceNumeric>1</cbc:CalculationSequenceNumeric>
+			      <cbc:TransactionCurrencyTaxAmount currencyID="KR">12.12</cbc:TransactionCurrencyTaxAmount>
+			      <cbc:Percent>25</cbc:Percent>
+			      <!--<cbc:BaseUnitMeasure unitCode="normalizedString">[TODO]</cbc:BaseUnitMeasure> -->
+			      <cbc:PerUnitAmount currencyID="KR">14.13</cbc:PerUnitAmount>
+			      <cbc:TierRange>[TODO]</cbc:TierRange>
+			      <cbc:TierRatePercent>25</cbc:TierRatePercent>
+			      <cac:TaxCategory>
+			             <cbc:ID>E</cbc:ID>
+			             <cbc:Percent>25</cbc:Percent>
+			             <cbc:TaxExemptionReasonCode>VATEX-EU-F</cbc:TaxExemptionReasonCode>
+			             <cac:TaxScheme>
+		        	             <cbc:ID>VAT</cbc:ID>
+			             </cac:TaxScheme>
+		              </cac:TaxCategory>
+		      </cac:TaxSubtotal>
+		 </cac:TaxTotal>
+	</cac:ItemPriceExtension>
+   </cac:InvoiceLine>
+</Invoice>
