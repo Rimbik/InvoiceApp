@@ -1,0 +1,14 @@
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\bin\Debug\UBLValidator.exe.config
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\bin\Debug\UBLValidator.exe
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\bin\Debug\UBLValidator.pdb
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\bin\Debug\Newtonsoft.Json.dll
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\bin\Debug\UblSharp.dll
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\bin\Debug\UblSharp.Validation.dll
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\bin\Debug\UblSharp.XmlSerializers.dll
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\bin\Debug\Newtonsoft.Json.xml
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\bin\Debug\UblSharp.xml
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\bin\Debug\UblSharp.Validation.xml
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\obj\Debug\UBLValidator.csprojAssemblyReference.cache
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\obj\Debug\UBLValidator.csproj.CopyComplete
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\obj\Debug\UBLValidator.exe
+D:\ROMProject\UBLGenratorMy_Validator\UBLGenratorMy\obj\Debug\UBLValidator.pdb
