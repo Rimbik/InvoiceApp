@@ -10,3 +10,16 @@ D:\DotnetPrac\UBL\UBLGenratorMy\UBLGenratorMy\obj\Debug\UBLGenratorMy.csproj.Cop
 D:\DotnetPrac\UBL\UBLGenratorMy\UBLGenratorMy\obj\Debug\UBLGenratorMy.exe
 D:\DotnetPrac\UBL\UBLGenratorMy\UBLGenratorMy\obj\Debug\UBLGenratorMy.pdb
 D:\DotnetPrac\UBL\UBLGenratorMy\UBLGenratorMy\obj\Debug\UBLGenratorMy.csprojAssemblyReference.cache
+F:\Old_IFC\invoiceapp\UBLGenratorMy\UBLGenratorMy\bin\Debug\UBLGenratorMy.exe.config
+F:\Old_IFC\invoiceapp\UBLGenratorMy\UBLGenratorMy\bin\Debug\UBLGenratorMy.exe
+F:\Old_IFC\invoiceapp\UBLGenratorMy\UBLGenratorMy\bin\Debug\UBLGenratorMy.pdb
+F:\Old_IFC\invoiceapp\UBLGenratorMy\UBLGenratorMy\bin\Debug\UblSharp.dll
+F:\Old_IFC\invoiceapp\UBLGenratorMy\UBLGenratorMy\bin\Debug\UblSharp.Validation.dll
+F:\Old_IFC\invoiceapp\UBLGenratorMy\UBLGenratorMy\bin\Debug\UblSharp.XmlSerializers.dll
+F:\Old_IFC\invoiceapp\UBLGenratorMy\UBLGenratorMy\bin\Debug\UblSharp.xml
+F:\Old_IFC\invoiceapp\UBLGenratorMy\UBLGenratorMy\bin\Debug\UblSharp.Validation.xml
+F:\Old_IFC\invoiceapp\UBLGenratorMy\UBLGenratorMy\obj\Debug\UBLGenratorMy.csproj.CoreCompileInputs.cache
+F:\Old_IFC\invoiceapp\UBLGenratorMy\UBLGenratorMy\obj\Debug\UBLGenratorMy.csproj.CopyComplete
+F:\Old_IFC\invoiceapp\UBLGenratorMy\UBLGenratorMy\obj\Debug\UBLGenratorMy.exe
+F:\Old_IFC\invoiceapp\UBLGenratorMy\UBLGenratorMy\obj\Debug\UBLGenratorMy.pdb
+F:\Old_IFC\invoiceapp\UBLGenratorMy\UBLGenratorMy\obj\Debug\UBLGenratorMy.csprojAssemblyReference.cache

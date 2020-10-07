@@ -62,7 +62,7 @@ namespace UBLGenratorMy
 
         public static void Foo() {
             //var path = @"D:\ROM\CLARIFICATIONS\Questionnaires\Mapping\CASE_1\TARGET_12007011905.xml"; // new Uri(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase)).LocalPath;
-            var path = @"D:\ROM\CLARIFICATIONS\Questionnaires\Mapping\CASE_1\Preparation_ph2\12007011905 PEPPOL BIS 3_0.xml"; // new Uri(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase)).LocalPath;
+            var path = @"D:\temp\ROM\xml\test.xml"; // new Uri(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase)).LocalPath;
 
 
             //XmlSchemaSet schema = new XmlSchemaSet();

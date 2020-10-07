@@ -37,12 +37,13 @@ namespace UBLGenratorMy
         }
 
         public string SerializeData(T data)
-
         {
 
             XmlSerializer employeeSerializer = new XmlSerializer(typeof(T));
 
-            swWriter = new StringWriter(sbData);
+            StringWriterUtf8 swWriter = new StringWriterUtf8(sbData);
+
+            //  swWriter = new StringWriter(sbData);
 
             employeeSerializer.Serialize(swWriter, data);
 
@@ -50,7 +51,21 @@ namespace UBLGenratorMy
 
         }
 
+        public class StringWriterUtf8 : System.IO.StringWriter
+        {
+            public override Encoding Encoding
+            {
+                get
+                {
+                    return Encoding.UTF8;
+                }
+            }
 
+            public StringWriterUtf8(StringBuilder sbData): base(sbData)
+            {
+                
+            }
+        }
 
         public T DeserializeData(string dataXML)
 

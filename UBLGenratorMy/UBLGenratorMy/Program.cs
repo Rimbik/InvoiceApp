@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,19 +19,26 @@ namespace UBLGenratorMy
         static void Main(string[] args)
         {
 
-            var doc = UBLCreditNote20Example.Create();
+            //var doc = UBLCreditNote20Example.Create();
 
-            SerializeDeserialize<CreditNoteType> serializeEmployee;
-            serializeEmployee = new SerializeDeserialize<CreditNoteType>();
-            string serializedEmployee = serializeEmployee.SerializeData(doc);
+            ////SerializeDeserialize<CreditNoteType> serializeEmployee;
+            ////serializeEmployee = new SerializeDeserialize<CreditNoteType>();
+            ////string serializedEmployee = serializeEmployee.SerializeData(doc);
 
-            var docInvoice = UBLInvoice21Example.Create();
-            var invoice = new SerializeDeserialize<InvoiceType>();
-            string invoiceXml = invoice.SerializeData(docInvoice);
+            //var docInvoice = UBLInvoice21Example.Create();
+            //var invoice = new SerializeDeserialize<InvoiceType>();
+            //string invoiceXml = invoice.SerializeData(docInvoice);
 
+            
             var smallInvoice = SmallInvoiceTest.Create();
             var invoiceSmall = new SerializeDeserialize<InvoiceType>();
+
+            var invoice = new SerializeDeserialize<InvoiceType>();
             string invoiceSmallXml = invoice.SerializeData(smallInvoice);
+
+            
+            var path = @"D:\temp\ROM\xml\test.xml";
+            File.WriteAllText(path, invoiceSmallXml);
 
 
         }
