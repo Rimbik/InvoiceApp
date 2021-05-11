@@ -40,7 +40,45 @@ namespace UBLGenratorMy
             var path = @"D:\temp\ROM\xml\test.xml";
             File.WriteAllText(path, invoiceSmallXml);
 
+            //
+            var SBDH = new StandardBusinessDocument();
+            SBDH.Invoice = smallInvoice;
+            SBDH.StandardBusinessDocumentHeader = new StandardBusinessDocumentHeader();
+            SBDH.StandardBusinessDocumentHeader.Sender = new Sender[2];
+            SBDH.StandardBusinessDocumentHeader.Sender[0] = new Sender()
+               {
+                   Identifier = new Identifier() { Authority = "countrycode:organizationid", Value = "003729605388" }
+               };
+            SBDH.StandardBusinessDocumentHeader.Sender[1] = new Sender()
+            {
+                Identifier = new Identifier() { Authority = "operatorid", Value = "6430037520006" }
+            };
 
+            SBDH.StandardBusinessDocumentHeader.Receiver = new Receiver[2];
+            SBDH.StandardBusinessDocumentHeader.Receiver[0] = new Receiver()
+            {
+                Identifier = new Identifier() { Authority = "countrycode:organizationid", Value = "FI9022929071421725" }
+            };
+            SBDH.StandardBusinessDocumentHeader.Receiver[1] = new Receiver()
+            {
+                Identifier = new Identifier() { Authority = "operatorid", Value = "NDEAFIHH" }
+            };
+
+            SBDH.StandardBusinessDocumentHeader.DocumentIdentification = new DocumentIdentification()
+            {
+                Standard = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2",
+                TypeVersion = "1.0",
+                InstanceIdentifier = "1",
+                Type = "BasicInvoice",
+                MultipleType = true,
+                CreationDateAndTime = "2021-05-04T01:38:59.829+02:00"
+            };
+
+            var invoiceSBDHSmall = new SerializeDeserialize<StandardBusinessDocument>();
+            string invoiceSBDHSmallXml = invoiceSBDHSmall.SerializeData(SBDH);
+
+            var path1 = @"D:\temp\ROM\xml\testSBDH.xml";
+            File.WriteAllText(path1, invoiceSBDHSmallXml);
         }
     }
 }

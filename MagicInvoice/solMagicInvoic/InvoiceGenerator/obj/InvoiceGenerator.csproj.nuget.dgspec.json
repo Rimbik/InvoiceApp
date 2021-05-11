@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\InvoiceGenerator\\InvoiceGenerator.csproj": {}
+    "F:\\Old_IFC\\invoiceapp\\MagicInvoice\\solMagicInvoic\\InvoiceGenerator\\InvoiceGenerator.csproj": {}
   },
   "projects": {
-    "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\InvoiceGenerator\\InvoiceGenerator.csproj": {
+    "F:\\Old_IFC\\invoiceapp\\MagicInvoice\\solMagicInvoic\\InvoiceGenerator\\InvoiceGenerator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\InvoiceGenerator\\InvoiceGenerator.csproj",
+        "projectUniqueName": "F:\\Old_IFC\\invoiceapp\\MagicInvoice\\solMagicInvoic\\InvoiceGenerator\\InvoiceGenerator.csproj",
         "projectName": "InvoiceGenerator",
-        "projectPath": "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\InvoiceGenerator\\InvoiceGenerator.csproj",
-        "packagesPath": "C:\\Users\\User.DESKTOP-MN2GKEE\\.nuget\\packages\\",
-        "outputPath": "D:\\ROMProject\\MagicInvoice\\solMagicInvoic\\InvoiceGenerator\\obj\\",
+        "projectPath": "F:\\Old_IFC\\invoiceapp\\MagicInvoice\\solMagicInvoic\\InvoiceGenerator\\InvoiceGenerator.csproj",
+        "packagesPath": "C:\\Users\\10651712\\.nuget\\packages\\",
+        "outputPath": "F:\\Old_IFC\\invoiceapp\\MagicInvoice\\solMagicInvoic\\InvoiceGenerator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User.DESKTOP-MN2GKEE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\10651712\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

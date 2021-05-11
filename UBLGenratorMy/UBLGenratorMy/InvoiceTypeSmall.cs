@@ -524,8 +524,12 @@ namespace UblSharp.Tests.Samples
 
             doc.Xmlns = new System.Xml.Serialization.XmlSerializerNamespaces(new[]
             {
-                new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
-                new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+                 new XmlQualifiedName("","urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"),
+                 new XmlQualifiedName("cac","urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"),
+                 new XmlQualifiedName("cbc","urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"),
+                 new XmlQualifiedName("ext","urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"),
+                 new XmlQualifiedName("udt","urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"),
+                 new XmlQualifiedName("sbc","urn:oasis:names:specification:ubl:schema:xsd:SignatureBasicComponents-2"),
             });
 
             return doc;

@@ -74,6 +74,8 @@ namespace UBLGenratorMy
             UblDocumentValidator val = new UblDocumentValidator();
             var errs = val.Validate(doc, suppressWarnings: false);
 
+           
+
             //doc.Validate(schema, ValidationEventHandler);
         }
 

@@ -45,7 +45,11 @@ namespace UBLGenratorMy
 
             //  swWriter = new StringWriter(sbData);
 
-            employeeSerializer.Serialize(swWriter, data);
+            XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
+            ns.Add("xsi", "http://www.w3.org/2001/XMLSchema-instance");
+            ns.Add("sh", "urn:sfti:documents:StandardBusinessDocumentHeader");
+
+            employeeSerializer.Serialize(swWriter, data, ns);
 
             return sbData.ToString();
 

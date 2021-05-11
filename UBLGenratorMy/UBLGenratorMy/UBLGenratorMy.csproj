@@ -55,6 +55,7 @@
     <Compile Include="GenericSerializerDeserializer.cs" />
     <Compile Include="InvoiceTypeSmall.cs" />
     <Compile Include="InvoiceType.cs" />
+    <Compile Include="StandardBusinessDocument.cs" />
     <Compile Include="UBLCreditNote20Example.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
