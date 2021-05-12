@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using UblSharp;
 
 namespace UBLGenratorMy
 {
    // [System.Xml.Serialization.XmlRoot("StandardBusinessDocument", Namespace = "urn:sfti:documents:StandardBusinessDocumentHeader")]
-    public class StandardBusinessDocument
+    public class StandardBusinessDocument<T>
     {
         [System.Xml.Serialization.XmlElement("StandardBusinessDocumentHeader", Namespace = "urn:sfti:documents:StandardBusinessDocumentHeader")]
         public StandardBusinessDocumentHeader StandardBusinessDocumentHeader { get; set; }
-       
-        public InvoiceType Invoice { get; set; }
+
+        public T Invoice { get; set; }
+
+        public StandardBusinessDocument()
+        {
+        }
     }
 
     public class StandardBusinessDocumentHeader

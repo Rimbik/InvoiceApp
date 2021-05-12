@@ -41,7 +41,7 @@ namespace UBLGenratorMy
             File.WriteAllText(path, invoiceSmallXml);
 
             //
-            var SBDH = new StandardBusinessDocument();
+            var SBDH = new StandardBusinessDocument<InvoiceType>();
             SBDH.Invoice = smallInvoice;
             SBDH.StandardBusinessDocumentHeader = new StandardBusinessDocumentHeader();
             SBDH.StandardBusinessDocumentHeader.Sender = new Sender[2];
@@ -74,11 +74,21 @@ namespace UBLGenratorMy
                 CreationDateAndTime = "2021-05-04T01:38:59.829+02:00"
             };
 
-            var invoiceSBDHSmall = new SerializeDeserialize<StandardBusinessDocument>();
+            var invoiceSBDHSmall = new SerializeDeserialize<StandardBusinessDocument<InvoiceType>>();
             string invoiceSBDHSmallXml = invoiceSBDHSmall.SerializeData(SBDH);
 
             var path1 = @"D:\temp\ROM\xml\testSBDH.xml";
             File.WriteAllText(path1, invoiceSBDHSmallXml);
+
+            //Try new
+            dynamic myfileObject = new SBDHClass();
+            myfileObject.Invoice123 = smallInvoice;
+
+            var invoiceSBDHSmall1 = new SerializeDeserialize<SBDHClass>();
+            string invoiceSBDHSmallXml1 = invoiceSBDHSmall1.SerializeData(myfileObject);
+            var path11 = @"D:\temp\ROM\xml\testSBDH1.xml";
+            File.WriteAllText(path11, invoiceSBDHSmallXml1);
+
         }
     }
 }

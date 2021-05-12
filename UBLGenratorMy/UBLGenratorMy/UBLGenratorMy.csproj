@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynamicDictionary.cs" />
     <Compile Include="GenericSerializerDeserializer.cs" />
     <Compile Include="InvoiceTypeSmall.cs" />
     <Compile Include="InvoiceType.cs" />
